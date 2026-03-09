@@ -13,6 +13,7 @@ KPIs
 - Gross Profit
 - Total Orders
 - % Revenue from Top 5 Customers
+
 Visualizations
 - Gross Profit Margin over Year and Month
 - Customer Lifetime Value by Customer
