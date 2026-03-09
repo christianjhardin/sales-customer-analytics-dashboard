@@ -13,6 +13,17 @@ Create an interactive executive level dashboard which dynamically displays key p
 - Business Intelligence Dashboard Design
 - Interactive Filters & Slicers
 
+## DAX Formula Examples
+Customer Lifetime Value = (SUM(SalesData[Revenue USD]) / SUM(SalesData[Quantity])) * (DISTINCTCOUNT(SalesData[Sales Order Number])) * (MAX(SalesData[Year]) - MIN(SalesData[Year]))
+
+Order Size Descriptor = 
+VAR Q75 = PERCENTILEX.INC(ALL(SalesData), SalesData[Quantity], 0.75)
+VAR Q50 = PERCENTILEX.INC(ALL(SalesData), SalesData[Quantity], 0.50)
+VAR Q25 = PERCENTILEX.INC(ALL(SalesData), SalesData[Quantity], 0.25)
+RETURN SWITCH(TRUE(), SalesData[Quantity] >= Q75, "Large Orders (Top 25%)", SalesData[Quantity] >= Q50, "Above Median Orders", SalesData[Quantity] >= Q25, "Mid-Size Orders", "Small Orders (Bottom 25%)")
+
+Top 5 Revenue = CALCULATE([Total Revenue], TOPN(5, VALUES(SalesData[Customer Name]), [Total Revenue]))
+
 ## Key Performanc Indicators & Viusalizations
 KPIs
 - Total Revenue
